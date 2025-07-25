@@ -1,0 +1,68 @@
+{
+    "testUsers": [
+        {
+            "username": "12345678901",
+            "nin": "12345678901",
+            "hasPassword": false,
+            "description": "User with NiN as username, no password"
+        },
+        {
+            "username": "testuser1",
+            "nin": "98765432109",
+            "hasPassword": false,
+            "description": "User with NiN attribute, no password"
+        },
+        {
+            "username": "testuser2",
+            "nin": "11111111111",
+            "hasPassword": true,
+            "description": "User with NiN attribute, has password"
+        },
+        {
+            "username": "testuser3",
+            "nin": null,
+            "hasPassword": false,
+            "description": "User without NiN attribute"
+        }
+    ],
+    "testScenarios": [
+        {
+            "name": "Auto-link successful",
+            "ninClaim": "12345678901",
+            "expectedResult": "SUCCESS",
+            "description": "Should auto-link user with matching NiN and no password"
+        },
+        {
+            "name": "Auto-link failed - user has password",
+            "ninClaim": "11111111111",
+            "expectedResult": "ATTEMPTED",
+            "description": "Should fall back to password verification when user has password"
+        },
+        {
+            "name": "Auto-link failed - user not found",
+            "ninClaim": "99999999999",
+            "expectedResult": "ATTEMPTED",
+            "description": "Should fall back when no user found with matching NiN"
+        },
+        {
+            "name": "Auto-link failed - no NiN claim",
+            "ninClaim": null,
+            "expectedResult": "ATTEMPTED",
+            "description": "Should fall back when no NiN claim provided"
+        }
+    ],
+    "identityProviderConfig": {
+        "alias": "signicat-test",
+        "providerId": "oidc",
+        "enabled": true,
+        "config": {
+            "authorizationUrl": "https://preprod.signicat.com/oidc/authorize",
+            "tokenUrl": "https://preprod.signicat.com/oidc/token",
+            "userInfoUrl": "https://preprod.signicat.com/oidc/userinfo",
+            "clientId": "test-client-id",
+            "clientSecret": "test-client-secret",
+            "defaultScope": "openid profile nin",
+            "syncMode": "IMPORT"
+        }
+    }
+}

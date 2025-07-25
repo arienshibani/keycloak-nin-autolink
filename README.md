@@ -30,7 +30,7 @@ This authenticator automatically links a federated IdP account to a local Keyclo
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/arienshibani/keycloak-nin-autolink
    cd keycloak-nin-autolink
    ```
 

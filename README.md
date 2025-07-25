@@ -1,6 +1,6 @@
 # Keycloak NiN Auto-Link Authenticator
 
-A custom Keycloak Authenticator SPI that automatically links federated IdP accounts to local users based on NiN (Norwegian Identity Number) matching. This authenticator replaces the "Verify Existing Account by Re-authentication" step in the First Broker Login flow.
+A custom Keycloak Service Provider Interface (SPI) that automatically links federated IdP accounts to local users based on NiN (Norwegian Identity Number) matching. This authenticator replaces the "Verify Existing Account by Re-authentication" step in the First Broker Login flow.
 
 ## 🔧 Background
 

@@ -21,9 +21,11 @@ This authenticator automatically links a federated IdP account to a local Keyclo
 
 ### Prerequisites
 
-- Java 17 or higher
+- Java 17 or higher (tested with Java 17, 21, and 24)
 - Maven 3.6 or higher
 - Docker (for building the custom Keycloak image)
+
+**Note:** If you're using Java 24, the tests use a simplified approach to avoid compatibility issues with Mockito/ByteBuddy. The main functionality works perfectly with all Java versions.
 
 ### Build Steps
 

@@ -21,7 +21,7 @@ jobs:
         cache: maven
 
     - name: Cache Maven packages
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -34,14 +34,14 @@ jobs:
       run: mvn -B test --file pom.xml
 
     - name: Upload test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results
         path: target/surefire-reports/
 
     - name: Upload JAR artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: keycloak-nin-autolink
         path: target/keycloak-nin-autolink-*.jar
@@ -54,7 +54,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Download JAR artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: keycloak-nin-autolink
         path: target/
@@ -69,7 +69,7 @@ jobs:
       run: docker save keycloak-nin-autolink:latest -o keycloak-nin-autolink.tar
 
     - name: Upload Docker image
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: docker-image
         path: keycloak-nin-autolink.tar
@@ -92,7 +92,7 @@ jobs:
       continue-on-error: true
 
     - name: Upload security report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: security-report

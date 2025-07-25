@@ -1,5 +1,5 @@
 # Use the official Keycloak image as base
-FROM quay.io/keycloak/keycloak:24.0.0 as builder
+FROM quay.io/keycloak/keycloak:26.1.4 as builder
 
 # Set environment variables for the build
 ENV KC_HEALTH_ENABLED=true
@@ -12,7 +12,7 @@ COPY target/keycloak-nin-autolink-1.0.0.jar /opt/keycloak/providers/
 RUN /opt/keycloak/bin/kc.sh build
 
 # Create the runtime image
-FROM quay.io/keycloak/keycloak:24.0.0
+FROM quay.io/keycloak/keycloak:26.1.4
 
 # Copy the built custom distribution
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
